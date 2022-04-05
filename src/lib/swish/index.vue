@@ -1,5 +1,5 @@
 <template>
-  <button :class="{checked: x}" @click="toggle"><span></span></button>
+  <button :class="{checked: checked}" @click="toggle"><span></span></button>
 </template>
 
 <script lang="ts">
@@ -7,12 +7,12 @@ import { ref } from "vue";
 
 export default {
   setup() {
-    const x = ref(false);
-    const toggle = () => {
-        x.value = !x.value
+    const checked: any = ref(false);
+    const toggle: any = () => {
+        checked.value = !checked.value
     }
     return {
-      x,
+      checked,
       toggle
     };
   },
