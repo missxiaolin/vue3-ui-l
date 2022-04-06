@@ -1,5 +1,5 @@
 <template>
-    <Swish :value="y" @input="y = $event" />
+    <Swish v-model:value="y" />
 </template>
 
 <script lang="ts">
