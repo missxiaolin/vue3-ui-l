@@ -1,5 +1,5 @@
 <template>
-    <Swish v-model:value="y" />
+    <Swish v-model:value="y" :disabled="true" />
 </template>
 
 <script lang="ts">
