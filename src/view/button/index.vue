@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Button />
+        <Button theme="button" @click="onClick">你好</Button>
     </div>
 </template>
 
@@ -9,6 +9,15 @@ import Button from '../../lib/button/index.vue'
 export default {
     components: {
         Button
+    },
+    setup() {
+        let onClick = () => {
+            alert('测试')
+        }
+
+        return {
+            onClick
+        }
     }
 }
 </script>
