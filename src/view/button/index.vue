@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Button theme="button" @click="onClick">你好</Button>
+        <Button theme="button" @click="onClick" :loading="true">你好</Button>
     </div>
 </template>
 
