@@ -2,6 +2,7 @@ import { createWebHashHistory, createRouter } from 'vue-router'
 import Index from '../view/index/index.vue'
 import Swish from '../view/swish/index.vue'
 import Button from '../view/button/index.vue'
+import Tabs from '../view/tabs/index.vue'
 
 const history = createWebHashHistory()
 const router = createRouter({
@@ -18,6 +19,10 @@ const router = createRouter({
         {
             path: '/button',
             component: Button
+        },
+        {
+            path: '/tabs',
+            component: Tabs
         }
     ]
 })
