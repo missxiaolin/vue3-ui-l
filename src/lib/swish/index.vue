@@ -56,7 +56,7 @@ $h2: $h - 4px;
   width: $h * 2;
   border: none;
   background: #9f9f9f;
-  border-radius: $h/2;
+  border-radius: 9px;
   position: relative;
   transition: background 250ms;
 
@@ -79,7 +79,7 @@ $h2: $h - 4px;
     height: $h2;
     width: $h2;
     background: white;
-    border-radius: $h2 / 2;
+    border-radius: 9px;
     transition: all 250ms;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
       0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
