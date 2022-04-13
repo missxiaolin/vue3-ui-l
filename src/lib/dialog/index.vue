@@ -6,14 +6,14 @@
         <div class="crisps-dialog">
           <header>
             <slot name="title" />
-            <span class="crisps-dialog-close"></span>
+            <span class="crisps-dialog-close" @click="close"></span>
           </header>
           <main>
             <slot name="content" />
           </main>
           <footer>
-            <Button>Cancel</Button>
-            <Button level="main">OK</Button>
+            <Button @click="cancel">Cancel</Button>
+            <Button @click="ok" level="main">OK</Button>
           </footer>
         </div>
       </div>
@@ -42,6 +42,31 @@ export default {
     cancel: {
       type: Function,
     },
+  },
+  setup(props, context) {
+    const close = () => {
+      context.emit("update:visible", false);
+    };
+    const onClickMask = () => {
+      if (props.maskClosable) {
+        close();
+      }
+    };
+    const ok = () => {
+      if (props.ok?.() !== false) {
+        close();
+      }
+    };
+    const cancel = () => {
+      props.cancel?.();
+      close();
+    };
+    return {
+      close,
+      onClickMask,
+      ok,
+      cancel,
+    };
   },
 };
 </script>

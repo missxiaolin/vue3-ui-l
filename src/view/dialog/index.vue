@@ -1,14 +1,19 @@
 <template>
   <div>
     <Button @click="toggle">toggle</Button>
-    <Dialog :ok="clickOk" :cancel="clickCancel" :maskClosable="true" v-model:visible="isVisible">
-        <template v-slot:title>
-            <strong>这是一个提示</strong>
-        </template>
-        <template v-slot:content>
-            <div>薯片！</div>
-            <div>好吃！</div>
-        </template>
+    <Dialog
+      :ok="clickOk"
+      :cancel="clickCancel"
+      :maskClosable="true"
+      v-model:visible="isVisible"
+    >
+      <template v-slot:title>
+        <strong>这是一个提示</strong>
+      </template>
+      <template v-slot:content>
+        <div>薯片！</div>
+        <div>好吃！</div>
+      </template>
     </Dialog>
   </div>
 </template>
