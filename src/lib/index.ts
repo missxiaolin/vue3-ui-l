@@ -1,0 +1,1 @@
+export {openDialog as openDialog} from './dialog/openDialog';
