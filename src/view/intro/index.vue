@@ -1,6 +1,5 @@
 <template>
     <article class="markdown-body" v-html="md">
-aaa
     </article>
 </template>
 
