@@ -46,6 +46,12 @@ const router = createRouter({
       path: "/doc/install/cs",
       component: md(install, "install"),
     },
+    {
+      path: "/doc/install/cs1",
+      component: h(Markdown, {
+        path: './install.md'
+      }),
+    },
   ],
 });
 
