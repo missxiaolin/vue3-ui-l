@@ -5,7 +5,14 @@ import Button from "../view/button/index.vue";
 import Tabs from "../view/tabs/index.vue";
 import Dialog from "../view/dialog/index.vue";
 import Intro from "../view/intro/index.vue";
-import Doc from '../view/doc/index.vue'
+import Doc from "../view/doc/index.vue";
+import { h } from "vue";
+import Markdown from "../markdown/Markdown.vue";
+import mD from "../markdown/mD.vue";
+import install from "../markdown/install.md";
+const md = (content: string, key: string) => {
+  return h(mD, { content, key });
+};
 
 const history = createWebHashHistory();
 const router = createRouter({
@@ -34,10 +41,12 @@ const router = createRouter({
     {
       path: "/doc/install",
       component: Intro,
-      
+    },
+    {
+      path: "/doc/install/cs",
+      component: md(install, "install"),
     },
   ],
 });
-
 
 export default router;
