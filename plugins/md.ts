@@ -13,7 +13,7 @@ export function md() {
     configureServer: [
       // 用于开发
       async ({ app }) => {
-        app.use(async (ctx, next) => {
+        app.use(async (ctx, next) => { // koa
           // koa
           if (ctx.path.endsWith(".md")) {
             ctx.type = "js";
