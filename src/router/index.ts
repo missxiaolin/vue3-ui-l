@@ -14,6 +14,11 @@ const md = (content: string, key: string) => {
   return h(mD, { content, key });
 };
 
+const mdNew = filename => h(Markdown, {
+  path: `./${filename}.md`,
+  key: filename
+})
+
 const history = createWebHashHistory();
 const router = createRouter({
   history: history,
@@ -48,10 +53,7 @@ const router = createRouter({
     },
     {
       path: "/doc/install/cs1",
-      component: h(Markdown, {
-        path: './install.md',
-        key: 'install'
-      }),
+      component: mdNew('install')
     },
   ],
 });
