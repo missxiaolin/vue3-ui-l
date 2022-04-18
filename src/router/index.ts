@@ -10,6 +10,9 @@ import { h } from "vue";
 import Markdown from "../markdown/Markdown.vue";
 import mD from "../markdown/mD.vue";
 import install from "../markdown/install.md";
+import DemoButton from '../view/demo/button.vue'
+
+
 const md = (content: string, key: string) => {
   return h(mD, { content, key });
 };
@@ -55,6 +58,10 @@ const router = createRouter({
       path: "/doc/install/cs1",
       component: mdNew('install')
     },
+    {
+      path: '/doc/btn/cs',
+      component: DemoButton
+    }
   ],
 });
 
