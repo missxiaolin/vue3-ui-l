@@ -62,8 +62,8 @@ export default {
     });
 
     const defaults = context.slots.default();
-    defaults.forEach((tab) => {
-      if (tab.type !== Tab) {
+    defaults.forEach((tab: any) => {
+      if (tab.type.name !== Tab.name) {
         throw new Error("Tabs 子标签必须为 Tab");
       }
     });
