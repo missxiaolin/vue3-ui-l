@@ -52,7 +52,7 @@ import {
   Ref,
   watchEffect,
 } from "vue";
-import { router } from "../router/index.ts";
+import router from "../router/index.ts";
 import { debounce } from "../utils/debounce";
 export default {
   name: "Doc",
