@@ -10,9 +10,11 @@ import Doc from "../view/doc.vue";
 import { h } from "vue";
 import Markdown from "../markdown/Markdown.vue";
 import mD from "../markdown/mD.vue";
-import install from "../markdown/install.md";
 import DemoButton from '../view/demo/button.vue'
 
+import install from "../markdown/install.md";
+import introduce from "../markdown/introduce.md";
+import getStarted from '../markdown/get-started.md'
 
 const md = (content: string, key: string) => {
   return h(mD, { content, key });
@@ -69,8 +71,16 @@ const router = createRouter({
         redirect: '/doc/introduce'
       },
       {
+        path: 'introduce',
+        component: md(introduce, 'introduce')
+      },
+      {
         path: 'install',
         component: md(install, "install")
+      },
+      {
+        path: 'get-started',
+        component: md(getStarted, 'get-started')
       },
   ]}
   ],
