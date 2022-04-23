@@ -65,7 +65,11 @@ const router = createRouter({
     },
     {path: '/doc', component: Doc, children: [
       {
-        path: 'introduce',
+        path: '',
+        redirect: '/doc/introduce'
+      },
+      {
+        path: 'install',
         component: md(install, "install")
       },
   ]}
