@@ -6,7 +6,7 @@ import Button from "../view/button/index.vue";
 import Tabs from "../view/tabs/index.vue";
 import Dialog from "../view/dialog/index.vue";
 import Intro from "../view/intro/index.vue";
-import Doc from "../view/doc/index.vue";
+import Doc from "../view/doc.vue";
 import { h } from "vue";
 import Markdown from "../markdown/Markdown.vue";
 import mD from "../markdown/mD.vue";
@@ -47,22 +47,28 @@ const router = createRouter({
       path: "/dialog",
       component: Dialog,
     },
-    {
-      path: "/doc/install",
-      component: Intro,
-    },
-    {
-      path: "/doc/install/cs",
-      component: md(install, "install"),
-    },
-    {
-      path: "/doc/install/cs1",
-      component: mdNew('install')
-    },
+    // {
+    //   path: "/doc/install",
+    //   component: Intro,
+    // },
+    // {
+    //   path: "/doc/install/cs",
+    //   component: md(install, "install"),
+    // },
+    // {
+    //   path: "/doc/install/cs1",
+    //   component: mdNew('install')
+    // },
     {
       path: '/doc/btn/cs',
       component: DemoButton
-    }
+    },
+    {path: '/doc', component: Doc, children: [
+      {
+        path: 'introduce',
+        component: md(install, "install")
+      },
+  ]}
   ],
 });
 
