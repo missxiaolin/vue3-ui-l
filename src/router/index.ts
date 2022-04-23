@@ -1,5 +1,6 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import Index from "../view/index/index.vue";
+import Home from '../view/home/index.vue'
 import Swish from "../view/swish/index.vue";
 import Button from "../view/button/index.vue";
 import Tabs from "../view/tabs/index.vue";
@@ -28,7 +29,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      component: Index,
+      component: Home,
     },
     {
       path: "/swish",
