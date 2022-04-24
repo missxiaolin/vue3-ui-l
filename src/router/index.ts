@@ -16,6 +16,8 @@ import install from "../markdown/install.md";
 import introduce from "../markdown/introduce.md";
 import getStarted from '../markdown/get-started.md'
 
+import SwishDemo from '../components/demo/SwitchDemo.vue'
+
 const md = (content: string, key: string) => {
   return h(mD, { content, key });
 };
@@ -84,7 +86,7 @@ const router = createRouter({
       },
       {
         path: 'switch',
-        component: Swish
+        component: SwishDemo
       },
   ]}
   ],
