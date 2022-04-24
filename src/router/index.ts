@@ -18,6 +18,7 @@ import getStarted from '../markdown/get-started.md'
 
 import SwishDemo from '../components/demo/SwitchDemo.vue'
 import ButtonDemo from '../components/demo/ButtonDemo.vue'
+import DialogDemo from '../components/demo/DialogDemo.vue'
 
 const md = (content: string, key: string) => {
   return h(mD, { content, key });
@@ -92,6 +93,10 @@ const router = createRouter({
       {
         path: 'button',
         component: ButtonDemo
+      },
+      {
+        path: 'dialog',
+        component: DialogDemo
       },
       
   ]}
