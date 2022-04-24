@@ -82,6 +82,10 @@ const router = createRouter({
         path: 'get-started',
         component: md(getStarted, 'get-started')
       },
+      {
+        path: 'switch',
+        component: Swish
+      },
   ]}
   ],
 });
