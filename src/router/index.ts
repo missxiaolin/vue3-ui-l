@@ -11,6 +11,7 @@ import { h } from "vue";
 import Markdown from "../markdown/Markdown.vue";
 import mD from "../markdown/mD.vue";
 import DemoButton from '../view/demo/button.vue'
+import ImagePicker from '../view/imagePicker/index.vue'
 
 import install from "../markdown/install.md";
 import introduce from "../markdown/introduce.md";
@@ -69,6 +70,10 @@ const router = createRouter({
     {
       path: '/doc/btn/cs',
       component: DemoButton
+    },
+    {
+      path: '/image/picker',
+      component: ImagePicker
     },
     {path: '/doc', component: Doc, children: [
       {
