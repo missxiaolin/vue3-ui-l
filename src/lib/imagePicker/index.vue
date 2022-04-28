@@ -12,7 +12,31 @@
 </template>
 
 
-<script>
+<script lang="ts">
+import { onMounted } from 'vue'
+import ImagePicker from '../utils/image'
+
+export default {
+  setup() {
+
+    onMounted(() => {
+      new ImagePicker({
+        element: document.querySelector('.image-picker'),
+        upload: {
+          url: 'https://frankfang.com/image-server/upload',
+          method: 'PUT',
+          inputName: 'file'
+        },
+        parseResponse: (response) => {
+          response = JSON.parse(response)
+          return `https://frankfang.com/image-server/upload/${response.key}`
+        },
+        fallbackImage: 'https://avatars0.githubusercontent.com/u/839559'
+      })
+    })
+    
+  }
+}
 </script>
 
 <style lang="scss" scoped>
