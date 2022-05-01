@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page" ref="page">
     <section>
       <div class="circle">1</div>
     </section>
@@ -16,7 +16,19 @@
 </template>
 
 <script lang="ts">
-export default {};
+import { onMounted, ref } from 'vue'
+import FullPage from '../utils/fullpage'
+
+export default {
+    setup() {
+        const page = ref()
+        onMounted(() => {
+            new FullPage({
+                element: page
+            })
+        })
+    }
+};
 </script>
 
 
