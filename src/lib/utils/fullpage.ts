@@ -41,6 +41,22 @@ class FullPage {
         () => {}
       );
     });
+    dom.onSwipe(this.options.element, (e, dir) => {
+      let targetIndex;
+      if (dir === "down") {
+        targetIndex = this.currentIndex - 1;
+      } else if (dir === "up") {
+        targetIndex = this.currentIndex + 1;
+      } else {
+        return;
+      }
+      this.goToSection(targetIndex).then(
+        () => {
+          this.currentIndex = targetIndex;
+        },
+        () => {}
+      );
+    });
     return this;
   }
 
