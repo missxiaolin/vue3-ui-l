@@ -24,9 +24,13 @@ export default {
         const page = ref()
         onMounted(() => {
             new FullPage({
-                element: page
+                element: page.value
             })
         })
+
+        return {
+            page
+        }
     }
 };
 </script>

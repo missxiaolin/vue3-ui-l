@@ -1,4 +1,12 @@
 let dom: any = {
+
+  /**
+   * @param element 
+   * @param eventType 
+   * @param selector 
+   * @param fn 
+   * @returns 
+   */
   on: function (element, eventType, selector, fn) {
     element.addEventListener(eventType, (e) => {
       let el = e.target;
@@ -14,6 +22,10 @@ let dom: any = {
     return element;
   },
 
+  /**
+   * @param element 
+   * @param fn 
+   */
   onSwipe: function (element, fn) {
     let x0, y0;
     element.addEventListener("touchstart", function (e) {
@@ -45,6 +57,10 @@ let dom: any = {
     });
   },
 
+  /**
+   * @param element 
+   * @returns 
+   */
   index: function (element) {
     let siblings = element.parentNode.children;
     for (let index = 0; index < siblings.length; index++) {
@@ -55,6 +71,11 @@ let dom: any = {
     return -1;
   },
 
+  /**
+   * @param element 
+   * @param className 
+   * @returns 
+   */
   uniqueClass: function (element, className) {
     dom.every(element.parentNode.children, (el) => {
       el.classList.remove(className);
@@ -63,6 +84,11 @@ let dom: any = {
     return element;
   },
 
+  /**
+   * @param nodeList 
+   * @param fn 
+   * @returns 
+   */
   every: function (nodeList, fn) {
     for (var i = 0; i < nodeList.length; i++) {
       fn.call(null, nodeList[i], i);
@@ -70,7 +96,12 @@ let dom: any = {
     return nodeList;
   },
 
-  // http://stackoverflow.com/a/35385518/1262580
+  /**
+   * http://stackoverflow.com/a/35385518/1262580
+   * @param html 
+   * @param children 
+   * @returns 
+   */
   create: function (html, children) {
     var template = document.createElement("template");
     template.innerHTML = html.trim();
@@ -81,6 +112,11 @@ let dom: any = {
     return node;
   },
 
+  /**
+   * @param parent 
+   * @param children 
+   * @returns 
+   */
   append: function (parent, children) {
     if (children.length === undefined) {
       children = [children];
@@ -90,6 +126,12 @@ let dom: any = {
     }
     return parent;
   },
+
+  /**
+   * @param parent 
+   * @param children 
+   * @returns 
+   */
   prepend: function (parent, children) {
     if (children.length === undefined) {
       children = [children];
@@ -103,6 +145,11 @@ let dom: any = {
     }
     return parent;
   },
+
+  /**
+   * @param element 
+   * @returns 
+   */
   removeChildren: function (element) {
     while (element.hasChildNodes()) {
       element.removeChild(element.lastChild);
@@ -110,6 +157,12 @@ let dom: any = {
     return this;
   },
 
+  /**
+   * @param element 
+   * @param eventType 
+   * @param detail 
+   * @returns 
+   */
   dispatchEvent: function (element, eventType, detail) {
     let event = new CustomEvent(eventType, { detail });
     element.dispatchEvent(event);
