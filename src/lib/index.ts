@@ -5,4 +5,4 @@ export {default as Tab} from './tab/index.vue';
 export {default as Tabs} from './tabs/index.vue';
 export {openDialog as openDialog} from './openDialog.ts';
 export { imagePicker as imagePicker } from './imagePicker/index.vue';
-export { fullpage as fullpage } from './fullpage/index.vue'
+export { fullpage as fullpage } from './fullpage/index.vue';
