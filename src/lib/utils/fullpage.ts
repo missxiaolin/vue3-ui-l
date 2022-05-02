@@ -1,4 +1,4 @@
-import dom from './dom'
+import dom from "./dom";
 class FullPage {
   private currentIndex: any;
   private options: any;
@@ -23,43 +23,58 @@ class FullPage {
   }
 
   initHtml() {
-    this.options.element.style.overflow = 'hidden'
-    dom.every(this.options.element.children, section => {
-        section.style.transition = `transform ${this.options.duration}`
-    })
+    this.options.element.style.overflow = "hidden";
+    dom.every(this.options.element.children, (section) => {
+      section.style.transition = `transform ${this.options.duration}`;
+    });
     return this;
   }
 
   bindEvents() {
     // 添加事件,滚轮事件
-    this.options.element.addEventListener('wheel', e => {
-        let targetIndex = this.currentIndex + (e.deltaY > 0 ? 1 : -1)
-        this.goToSection(targetIndex).then(
-            () => {
-                this.currentIndex = targetIndex
-            },
-            () => {}
-        )
-    })
+    this.options.element.addEventListener("wheel", (e) => {
+      let targetIndex = this.currentIndex + (e.deltaY > 0 ? 1 : -1);
+      this.goToSection(targetIndex).then(
+        () => {
+          this.currentIndex = targetIndex;
+        },
+        () => {}
+      );
+    });
     return this;
   }
 
   /**
    * 节流，以免过快出现bug
-   * @param targetIndex 
+   * @param targetIndex
    */
   goToSection(targetIndex) {
-    return new Promise((resolve, reject) => {
-        if (this.animating) { // 滚动中
-            reject()
-        } else if (targetIndex < 0) { // 小于0情况
-            reject()
-        } else if (targetIndex >= this.options.element.children.length) { // 划到最后一页情况
-            reject()
-        } else {
-
-        }
-    })
+    return new Promise((resolve: any, reject: any) => {
+      if (this.animating) {
+        // 滚动中
+        reject();
+      } else if (targetIndex < 0) {
+        // 小于0情况
+        reject();
+      } else if (targetIndex >= this.options.element.children.length) {
+        // 划到最后一页情况
+        reject();
+      } else {
+        this.animating = true;
+        let that = this;
+        this.options.element.children[0].addEventListener(
+          "transitionend",
+          function callback() {
+            this.removeEventListener("transitionend", callback);
+            that.animating = false;
+            resolve();
+          }
+        );
+        dom.every(this.options.element.children, (section) => {
+          section.style.transform = `translateY(-${100 * targetIndex}%)`;
+        });
+      }
+    });
   }
 }
 
