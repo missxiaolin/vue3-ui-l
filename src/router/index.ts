@@ -13,6 +13,7 @@ import mD from "../markdown/mD.vue";
 import DemoButton from '../view/demo/button.vue'
 import ImagePicker from '../view/imagePicker/index.vue'
 import fullpage from '../view/fullpage/index.vue'
+import pager from '../view/pager/index.vue'
 
 import install from "../markdown/install.md";
 import introduce from "../markdown/introduce.md";
@@ -59,6 +60,10 @@ const router = createRouter({
     {
       path: '/fullpage',
       component: fullpage
+    },
+    {
+      path: '/pager',
+      component: pager
     },
     // {
     //   path: "/doc/install",
