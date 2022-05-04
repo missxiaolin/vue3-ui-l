@@ -1,16 +1,42 @@
 <template>
   <div>
     <p>这个分页器会在控制台打印出页数</p>
-    <div class="pager"></div>
+    <div class="pager" ref="p"></div>
   </div>
   <div>
     <p>这个分页器会改变 url</p>
-    <div class="pager"></div>
+    <div class="pager" ref="ps"></div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Pager from "../utils/pager";
+import { ref, onMounted } from "vue";
 
+export default {
+  setup() {
+    const p: any = ref();
+    const ps: any = ref();
+
+    onMounted(() => {
+      new Pager({
+        element: p.value,
+        currentPage: 1,
+        totalPage: 100,
+      });
+      p.value.addEventListener("pageChange", (e) => {
+        console.log(e.detail.page);
+      });
+      // console.log(pager.value)
+      // console.log(pagers.value)
+    });
+
+    return {
+      p,
+      ps,
+    };
+  },
+};
 </script>
 
 <style>
