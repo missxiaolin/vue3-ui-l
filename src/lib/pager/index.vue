@@ -27,8 +27,6 @@ export default {
       p.value.addEventListener("pageChange", (e) => {
         console.log(e.detail.page);
       });
-      // console.log(pager.value)
-      // console.log(pagers.value)
     });
 
     return {
