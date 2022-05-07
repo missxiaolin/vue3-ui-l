@@ -1,3 +1,5 @@
+import dom from "./dom";
+
 interface Options {
   element: HTMLDivElement;
   currentPage: number;
@@ -38,11 +40,21 @@ class Pager {
   }
 
   initHtml() {
+    let pager = (this.domRefs.pager = document.createElement("nav"));
+    this.domRefs.first = dom.create(this.options.templates.first);
+    this.domRefs.prev = dom.create(this.options.templates.prev);
+    this.domRefs.next = dom.create(this.options.templates.next);
+    this.domRefs.last = dom.create(this.options.templates.last);
+    this._checkButtons();
     return this;
   }
 
   bindEvents() {
     return this;
+  }
+
+  _checkButtons() {
+    
   }
 }
 
