@@ -57,7 +57,34 @@ class Pager {
   }
 
   bindEvents() {
+    dom.on(this.options.element, 'click', 'ol[data-role="pageNumbers"]>li', (e, el) => {
+      this.goToPage(parseInt(el.dataset.page, 10))
+    })
     return this;
+  }
+
+  /**
+   * @param page 
+   * @returns 
+   */
+  goToPage(page: number) {
+    if (!page || page > this.options.totalPage || page === this.currentPage) {
+      return
+    }
+    if (this.options.pageQuery) {
+      bom.queryString.set(this.options.pageQuery, page)
+    }
+    this.currentPage = page
+    this.options.element.dispatchEvent(new CustomEvent('pageChange', { detail: { page } }))
+    this.rerender()
+  }
+
+  rerender() {
+    this._checkButtons()
+    let newNumbers = this._createNumbers()
+    let oldNumbers = this.domRefs.numbers
+    oldNumbers.parentNode.replaceChild(newNumbers, oldNumbers)
+    this.domRefs.numbers = newNumbers
   }
 
   _checkButtons() {
