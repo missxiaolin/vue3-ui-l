@@ -22,7 +22,7 @@ export default {
       new Pager({
         element: p.value,
         currentPage: 1,
-        totalPage: 100,
+        totalPage: 200,
       });
       p.value.addEventListener("pageChange", (e) => {
         console.log(e.detail.page);

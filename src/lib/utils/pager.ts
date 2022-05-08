@@ -46,6 +46,13 @@ class Pager {
     this.domRefs.next = dom.create(this.options.templates.next);
     this.domRefs.last = dom.create(this.options.templates.last);
     this._checkButtons();
+    this.domRefs.numbers = this._createNumbers()
+    pager.appendChild(this.domRefs.first)
+    pager.appendChild(this.domRefs.prev)
+    pager.appendChild(this.domRefs.numbers)
+    pager.appendChild(this.domRefs.next)
+    pager.appendChild(this.domRefs.last)
+    this.options.element.appendChild(pager)
     return this;
   }
 
@@ -54,7 +61,42 @@ class Pager {
   }
 
   _checkButtons() {
-    
+    if (this.currentPage === 1) {
+      this.domRefs.first.setAttribute("disabled", "");
+      this.domRefs.prev.setAttribute("disabled", "");
+    } else {
+      this.domRefs.first.removeAttribute("disabled");
+      this.domRefs.prev.removeAttribute("disabled");
+    }
+    if (this.currentPage === this.options.totalPage) {
+      this.domRefs.next.setAttribute("disabled", "");
+      this.domRefs.last.setAttribute("disabled", "");
+    } else {
+      this.domRefs.next.removeAttribute("disabled");
+      this.domRefs.last.removeAttribute("disabled");
+    }
+  }
+
+  _createNumbers() {
+    let currentPage = this.currentPage
+    let { buttonCount, totalPage } = this.options
+    let start1 = Math.max(currentPage - Math.round(buttonCount / 2), 1)
+    let end1 = Math.min(start1 + buttonCount - 1, totalPage)
+    let end2 = Math.min(currentPage + Math.round(buttonCount / 2) - 1, totalPage)
+    let start2 = Math.max(end2 - buttonCount + 1, 1)
+    let start = Math.min(start1, start2)
+    let end = Math.max(end1, end2)
+
+    let ol = dom.create('<ol data-role="pageNumbers"></ol>')
+    let numbers = []
+    for (var i = start; i <= end; i++) {
+      let li = dom.create(`<li data-page="${i}">${this.options.templates.number.replace('%page%', i)}</li>`)
+      if (i === currentPage) {
+        li.classList.add('current')
+      }
+      ol.appendChild(li)
+    }
+    return ol
   }
 }
 
