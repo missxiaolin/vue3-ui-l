@@ -60,6 +60,18 @@ class Pager {
     dom.on(this.options.element, 'click', 'ol[data-role="pageNumbers"]>li', (e, el) => {
       this.goToPage(parseInt(el.dataset.page, 10))
     })
+    this.domRefs.first.addEventListener('click', () => {
+      this.goToPage(1)
+    })
+    this.domRefs.last.addEventListener('click', () => {
+      this.goToPage(this.options.totalPage)
+    })
+    this.domRefs.prev.addEventListener('click', () => {
+      this.goToPage(this.currentPage - 1)
+    })
+    this.domRefs.next.addEventListener('click', () => {
+      this.goToPage(this.currentPage + 1)
+    })
     return this;
   }
 
