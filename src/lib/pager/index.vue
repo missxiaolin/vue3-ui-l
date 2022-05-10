@@ -12,6 +12,7 @@
 <script lang="ts">
 import Pager from "../utils/pager";
 import { ref, onMounted } from "vue";
+import bom from '../utils/bom'
 
 export default {
   setup() {
@@ -26,6 +27,13 @@ export default {
       });
       p.value.addEventListener("pageChange", (e) => {
         console.log(e.detail.page);
+      });
+
+      new Pager({
+        element: ps.value,
+        currentPage: parseInt(bom.queryString.get("page"), 10),
+        totalPage: 100,
+        pageQuery: "page",
       });
     });
 

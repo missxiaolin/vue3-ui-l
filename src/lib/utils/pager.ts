@@ -1,9 +1,11 @@
 import dom from "./dom";
+import bom from './bom'
 
 interface Options {
   element: HTMLDivElement;
   currentPage: number;
   totalPage: number;
+  pageQuery?: string
 }
 
 class Pager {
