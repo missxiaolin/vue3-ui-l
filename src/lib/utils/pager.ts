@@ -1,19 +1,13 @@
 import dom from "./dom";
 import bom from './bom'
-
-interface Options {
-  element: HTMLDivElement;
-  currentPage: number;
-  totalPage: number;
-  pageQuery?: string
-}
+import { pagerOptions } from './modules/pager'
 
 class Pager {
   private options: any;
   private domRefs: any;
   private currentPage: number;
 
-  constructor(options: Options) {
+  constructor(options: pagerOptions) {
     let defaultOptions = {
       element: null,
       buttonCount: 10,
